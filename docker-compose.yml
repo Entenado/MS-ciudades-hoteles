@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+    eureka-sv:
+        build: eureka-sv
+        mem_limit: 512m
+        ports:
+            - "8761:8761"
+        networks:
+          - 'ciudadeshotel-network'
+    cities-server:
+        build: cities-service
+        mem_limit: 512m
+        ports:
+            - "8087:8087"
+        networks:
+          - 'ciudadeshotel-network'
+    hotels-service:
+        build: hotels-service
+        mem_limit: 512m
+        ports:
+            - "8086:8086"
+        networks:
+          - 'ciudadeshotel-network'
+
+networks:
+  ciudadeshotel-network:
